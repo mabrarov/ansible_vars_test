@@ -1,2 +1,3 @@
 ---
-message: 'var_printer role default'
+var_def: '''printer'' role defaults'
+message: 'var_def is taken from {{ var_def }}'

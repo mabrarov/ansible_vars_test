@@ -1,6 +1,9 @@
 ---
+var_all: '''production'' inventory, ''all'' group'
+var_host: '''production'' inventory, ''all'' group'
 var_1: '''production'' inventory, ''all'' group'
 var_2: '''production'' inventory, ''all'' group'
 var_3: '''production'' inventory, ''all'' group'
 var_3_1: '''production'' inventory, ''all'' group'
 var_3_2: '''production'' inventory, ''all'' group'
+var_3_2_z: '''production'' inventory, ''all'' group'

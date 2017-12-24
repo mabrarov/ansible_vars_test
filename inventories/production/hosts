@@ -2,13 +2,18 @@
 localhost
 
 [group_2]
-#
+localhost
 
 [group_3_1]
-#
+localhost
 
 [group_3_2]
-#
+localhost
 
-[group_3]
-#
+[group_3_z]
+localhost
+
+[group_3:children]
+group_3_z
+group_3_1
+group_3_2
