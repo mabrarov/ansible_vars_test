@@ -1,0 +1,9 @@
+---
+var_all: '''staging'' inventory, ''all'' group'
+var_host: '''staging'' inventory, ''all'' group'
+var_1: '''staging'' inventory, ''all'' group'
+var_2: '''staging'' inventory, ''all'' group'
+var_3: '''staging'' inventory, ''all'' group'
+var_3_1: '''staging'' inventory, ''all'' group'
+var_3_2: '''staging'' inventory, ''all'' group'
+var_3_2_z: '''staging'' inventory, ''all'' group'
