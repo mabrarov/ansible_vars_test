@@ -12,4 +12,4 @@
   - { role: printer, message: 'var_3 is taken from {{ var_3 }}' }
   - { role: printer, message: 'var_3_1 is taken from {{ var_3_1 }}' }
   - { role: printer, message: 'var_3_2 is taken from {{ var_3_2 }}' }
-  - { role: printer, message: 'var_3_z is taken from {{ var_3_2_z }}' }
+  - { role: printer, message: 'var_3_z is taken from {{ var_3_z }}' }
