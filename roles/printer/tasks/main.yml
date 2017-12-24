@@ -1,0 +1,5 @@
+---
+- block:
+  - name: 'print'
+    debug:
+      msg: "{{message}}"

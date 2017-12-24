@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: False
+  roles:
+  - { role: printer, message: 'var_1 is taken from {{ var_1 }}' }
+  - { role: printer, message: 'var_2 is taken from {{ var_2 }}' }
+  - { role: printer, message: 'var_3 is taken from {{ var_3 }}' }
+  - { role: printer, message: 'var_3_1 is taken from {{ var_3_1 }}' }
+  - { role: printer, message: 'var_3_2 is taken from {{ var_3_2 }}' }
