@@ -11,7 +11,7 @@ Test of Ansible vars which are calculated based on `group_vars`, `host_vars` and
 # Running on staging Ansible inventory
 
 ```bash
-$ docker run --rm -w /etc/ansible -v /home/user/ansible_vars_test:/etc/ansible williamyeh/ansible:alpine3 ansible-playbook printer.yml -i inventories/staging/hosts
+$ docker run --rm -v /home/user/ansible_vars_test:/etc/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/staging/hosts
 ```
 
 produces:
@@ -88,7 +88,7 @@ localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ## Running on canary production servers
 
 ```bash
-$ docker run --rm -w /etc/ansible -v /home/user/ansible_vars_test:/etc/ansible williamyeh/ansible:alpine3 ansible-playbook printer.yml -i inventories/production/hosts --limit canary
+$ docker run --rm -v /home/user/ansible_vars_test:/etc/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit canary
 ```
 
 produces:
@@ -163,7 +163,7 @@ localhost_canary           : ok=12   changed=0    unreachable=0    failed=0
 ## Running on non canary production servers
 
 ```bash
-$ docker run --rm -w /etc/ansible -v /home/user/ansible_vars_test:/etc/ansible williamyeh/ansible:alpine3 ansible-playbook printer.yml -i inventories/production/hosts --limit non_canary
+$ docker run --rm -v /home/user/ansible_vars_test:/etc/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit non_canary
 ```
 
 produces:
@@ -238,7 +238,7 @@ localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ## Running on all production servers
 
 ```bash
-$ docker run --rm -w /etc/ansible -v /home/user/ansible_vars_test:/etc/ansible williamyeh/ansible:alpine3 ansible-playbook printer.yml -i inventories/production/hosts
+$ docker run --rm -v /home/user/ansible_vars_test:/etc/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts
 ```
 produces:
 
