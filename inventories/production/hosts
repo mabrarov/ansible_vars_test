@@ -1,5 +1,5 @@
 [canary]
-jumper ansible_host=localhost
+localhost_canary ansible_host=localhost
 
 [group_1]
 localhost
