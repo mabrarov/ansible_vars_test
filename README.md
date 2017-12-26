@@ -74,8 +74,13 @@ ok: [localhost] => {
     "msg": "var_3_z is taken from 'staging' inventory, 'group_3_z' group"
 }
 
+TASK [printer : print] *********************************************************
+ok: [localhost] => {
+    "msg": "var_4 is taken from playbook, 'group_4' group"
+}
+
 PLAY RECAP *********************************************************************
-localhost                  : ok=11   changed=0    unreachable=0    failed=0
+localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ```
 
 # Running on production Ansible inventory
@@ -146,8 +151,13 @@ ok: [jumper] => {
     "msg": "var_3_z is taken from 'production' inventory, 'all' group"
 }
 
+TASK [printer : print] *********************************************************
+ok: [jumper] => {
+    "msg": "var_4 is taken from 'production' inventory, 'all' group"
+}
+
 PLAY RECAP *********************************************************************
-jumper                     : ok=11   changed=0    unreachable=0    failed=0
+jumper                     : ok=12   changed=0    unreachable=0    failed=0
 ```
 
 ## Running on non canary servers
@@ -216,8 +226,13 @@ ok: [localhost] => {
     "msg": "var_3_z is taken from 'production' inventory, 'group_3_z' group"
 }
 
+TASK [printer : print] *********************************************************
+ok: [localhost] => {
+    "msg": "var_4 is taken from playbook, 'group_4' group"
+}
+
 PLAY RECAP *********************************************************************
-localhost                  : ok=11   changed=0    unreachable=0    failed=0
+localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ```
 
 ## Running on all servers
@@ -318,7 +333,15 @@ ok: [jumper] => {
     "msg": "var_3_z is taken from 'production' inventory, 'all' group"
 }
 
+TASK [printer : print] *********************************************************
+ok: [localhost] => {
+    "msg": "var_4 is taken from playbook, 'group_4' group"
+}
+ok: [jumper] => {
+    "msg": "var_4 is taken from 'production' inventory, 'all' group"
+}
+
 PLAY RECAP *********************************************************************
-jumper                     : ok=11   changed=0    unreachable=0    failed=0
-localhost                  : ok=11   changed=0    unreachable=0    failed=0
+jumper                     : ok=12   changed=0    unreachable=0    failed=0
+localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ```
