@@ -16,6 +16,9 @@ localhost
 [group_3_z]
 localhost
 
+[group_4]
+localhost
+
 [group_3:children]
 group_3_z
 group_3_1
