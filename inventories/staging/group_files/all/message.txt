@@ -1,0 +1,1 @@
+message file is taken from 'staging' inventory, 'all' group
