@@ -1,0 +1,5 @@
+---
+# This var can contain:
+# 1. absolute path to the file with message text
+# 2. relative (to inventory base dir) path to the file with message text
+message_file: 'host_files/{{ inventory_hostname }}/message.txt'

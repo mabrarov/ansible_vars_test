@@ -1,0 +1,2 @@
+---
+message_abs_file: '{{ inventory_dir | join_path(message_file) }}'
