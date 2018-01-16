@@ -8,7 +8,11 @@ Test of Ansible vars which are calculated based on `group_vars`, `host_vars` and
 1. Docker client is installed and configured to communicate with Docker Engine.
 1. Repository is cloned into `/home/user/ansible_vars_test` directory on Docker host.
 
-# Running on staging Ansible inventory
+# Ansible vars inheritance and overriding
+
+Below example demonstrates standard inheritance and overriding of Ansible vars provided by Ansible out of the box.
+
+Running printer playbook on staging environment:
 
 ```bash
 $ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/staging/hosts
@@ -83,9 +87,11 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ```
 
-# Running on production Ansible inventory
+# Dealing with multiple instances of the same application on one host
 
-## Running on canary production servers
+Below example demonstrates how to make your Ansible inventory to store configuration (Ansible vars) per application instance and not per host, i.e. it shows how to apply the same role (with different parameters) to the same target host and to keep all your Ansible vars in Ansible inventory and not in playbook.
+
+Running printer playbook on canary production hosts:
 
 ```bash
 $ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit canary
@@ -160,7 +166,7 @@ PLAY RECAP *********************************************************************
 localhost_canary           : ok=12   changed=0    unreachable=0    failed=0
 ```
 
-## Running on non canary production servers
+Running printer playbook on non canary production hosts:
 
 ```bash
 $ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit non_canary
@@ -235,11 +241,12 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=12   changed=0    unreachable=0    failed=0
 ```
 
-## Running on all production servers
+Running printer playbook on all production hosts:
 
 ```bash
 $ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts
 ```
+
 produces:
 
 ```
@@ -344,4 +351,96 @@ ok: [localhost_canary] => {
 PLAY RECAP *********************************************************************
 localhost                  : ok=12   changed=0    unreachable=0    failed=0
 localhost_canary           : ok=12   changed=0    unreachable=0    failed=0
+```
+
+# Dealing with configuration files
+
+Below examples demonstrates how to deal with environment (inventory, group, host) specific files which content can not be stored in Ansible var (like binary key store or large files).
+
+Running file_printer playbook on staging environment:
+
+```bash
+$ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook file_printer.yml -i inventories/staging/hosts
+```
+
+produces:
+
+```
+PLAY [all] *********************************************************************
+
+TASK [file_printer : debug] ****************************************************
+ok: [localhost] => {
+    "msg": [
+        "reading from: group_files/all/message.txt",
+        "full path is: /ansible/inventories/staging/group_files/all/message.txt"
+    ]
+}
+
+TASK [file_printer : read file] ************************************************
+ok: [localhost]
+
+TASK [file_printer : print file] ***********************************************
+ok: [localhost] => {
+    "msg": [
+        "message file is taken from 'staging' inventory, 'all' group"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0
+
+```
+
+Running file_printer playbook on production environment:
+
+```bash
+$ docker run --rm -w /ansible -v /home/user/ansible_vars_test:/ansible abrarov/ansible ansible-playbook file_printer.yml -i inventories/production/hosts
+```
+
+produces:
+
+```
+PLAY [all] *********************************************************************
+
+TASK [file_printer : debug] ****************************************************
+ok: [localhost] => {
+    "msg": [
+        "reading from: /etc/hosts",
+        "full path is: /etc/hosts"
+    ]
+}
+
+TASK [file_printer : read file] ************************************************
+ok: [localhost]
+
+TASK [file_printer : print file] ***********************************************
+ok: [localhost] => {
+    "msg": [
+        "127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost ip6-loopback\nfe00::0\tip6-localnet\nff00::0\tip6-mcastprefix\nff02::1\tip6-allnodes\nff02::2\tip6-allrouters\n172.17.0.2\t3c9c03458b02"
+    ]
+}
+
+PLAY [all] *********************************************************************
+
+TASK [file_printer : debug] ****************************************************
+ok: [localhost_canary] => {
+    "msg": [
+        "reading from: host_files/localhost_canary/message.txt",
+        "full path is: /ansible/inventories/production/host_files/localhost_canary/message.txt"
+    ]
+}
+
+TASK [file_printer : read file] ************************************************
+ok: [localhost_canary]
+
+TASK [file_printer : print file] ***********************************************
+ok: [localhost_canary] => {
+    "msg": [
+        "message file is taken from 'production' inventory, 'localhost_canary' host"
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0
+localhost_canary           : ok=3    changed=0    unreachable=0    failed=0
 ```
