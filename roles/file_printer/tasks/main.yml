@@ -1,0 +1,12 @@
+---
+- debug:
+    msg: 
+    - 'reading from: {{ message_file }}'
+    - 'full path is: {{ message_abs_file }}'
+- name: read file
+  set_fact:
+    message: '{{ lookup(''file'', message_abs_file) }}'
+- name: print file
+  debug:
+    msg: 
+    - '{{ message }}'
