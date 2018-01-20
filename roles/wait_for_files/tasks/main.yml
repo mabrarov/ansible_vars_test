@@ -12,5 +12,5 @@
   with_items: '{{ files }}'
 - debug:
     msg: 
-    - 'file: {{ files }}'
+    - 'files: {{ files }}'
     - 'processed_files: {{ processed_files }}'
