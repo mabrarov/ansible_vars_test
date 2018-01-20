@@ -1,0 +1,16 @@
+---
+- set_fact:
+    files:
+    - 'one'
+    - 'two'
+    - 'three'
+- set_fact:
+    processed_files: []
+- include_tasks: wait.yml
+  vars:
+    msg: '{{ item }}'
+  with_items: '{{ files }}'
+- debug:
+    msg: 
+    - 'file: {{ files }}'
+    - 'processed_files: {{ processed_files }}'

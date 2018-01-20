@@ -1,0 +1,5 @@
+---
+- debug:
+    msg: '{{ msg }}'
+- set_fact:
+    processed_files: '{{ processed_files | default([]) }} + [ ''{{ msg }}'' ]'
