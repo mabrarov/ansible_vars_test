@@ -1,5 +1,7 @@
 # Test of Ansible vars 
 
+[![License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](LICENSE)
+
 Test of Ansible vars which are calculated based on `group_vars`, `host_vars` and role default vars.
 
 # Pre-requisites and assumptions
