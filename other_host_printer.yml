@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+  - name: print host_var for this host
+    debug:
+      msg: 'host_var for {{ inventory_hostname }} is taken from {{ host_var }}'
+  - name: print host_var for localhost_canary host
+    debug:
+      msg: 'host_var for localhost_canary is taken from {{ hostvars[''localhost_canary''][''host_var''] }}'
+  - debug:
+      msg: 'print host_var for {{ play_hosts }}'
+  - name: print host_var for all hosts of current play
+    debug:
+      msg: 'host_var for {{ item }} is taken from {{ hostvars[item][''host_var''] }}'
+    with_items: '{{ play_hosts }}'

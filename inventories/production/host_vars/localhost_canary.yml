@@ -1,3 +1,4 @@
 ---
 var_host: '''production'' inventory, ''localhost_canary'' host'
 message_file: 'host_files/localhost_canary/message.txt'
+host_var: '''producton'' inventory, ''localhost_canary'' host'
