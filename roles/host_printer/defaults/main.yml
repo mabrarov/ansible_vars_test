@@ -1,0 +1,3 @@
+---
+host_msg: '''host_printer'' role defaults'
+host: '{{ inventory_hostname }}'

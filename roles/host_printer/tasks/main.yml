@@ -1,0 +1,13 @@
+---
+- name: print host_msg for this host
+  debug:
+    msg: 'host_msg for {{ inventory_hostname }} is taken from {{ host_msg }}'
+- name: print host_msg for specified host
+  debug:
+    msg: 'host_msg for {{ host }} is taken from {{ hostvars[host][''host_msg''] }}'
+- debug:
+    msg: 'print host_msg for {{ play_hosts }}'
+- name: print host_msg for all hosts of current play
+  debug:
+    msg: 'host_msg for {{ item }} is taken from {{ hostvars[item][''host_msg''] }}'
+  with_items: '{{ play_hosts }}'
