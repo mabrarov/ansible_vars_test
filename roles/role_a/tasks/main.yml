@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: 'role_var_a is taken from {{ role_var_a }}'
+- debug:
+    msg: 'role_var_b is taken from {{ role_var_b }}'
+- debug:
+    msg: 'role_var_c is taken from {{ role_var_c }}'
+- debug:
+    msg: 'role_var_d is taken from {{ role_var_d }}'
+  when: role_var_d is defined
+- debug:
+    msg: 'role_var_d is undefined'
+  when: not (role_var_d is defined)

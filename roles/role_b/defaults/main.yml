@@ -1,0 +1,4 @@
+---
+role_var_a: '''role_b'' role default vars'
+role_var_b: '''role_b'' role default vars'
+role_var_c: '''role_b'' role default vars'
