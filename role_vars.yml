@@ -4,11 +4,8 @@
   roles:
   - role_b
   - role_a
-# - hosts: all
-#   gather_facts: False
-#   roles:
-#   - role_b
-# - hosts: all
-#   gather_facts: False
-#   roles:
-#   - role_a
+- hosts: all
+  gather_facts: False
+  roles:
+  - role_a
+  - role_b

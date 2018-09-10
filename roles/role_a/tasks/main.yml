@@ -11,3 +11,18 @@
 - debug:
     msg: 'role_var_d is undefined'
   when: not (role_var_d is defined)
+- debug:
+    msg: 'role_var_r is taken from {{ role_var_r.msg }}'
+  when: role_var_r is defined
+- debug:
+    msg: 'role_var_r is undefined'
+  when: not (role_var_r is defined)
+- debug:
+    msg: '''role_a'' registered var'
+  register: role_var_r
+- debug:
+    msg: 'role_var_r is taken from {{ role_var_r.msg }}'
+  when: role_var_r is defined
+- debug:
+    msg: 'role_var_r is undefined'
+  when: not (role_var_r is defined)
