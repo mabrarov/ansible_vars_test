@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+  - debug:
+      msg: 'my_var -> {{ my_var }}'
+  - debug:
+      msg: 'vars[my_var] -> {{ vars[''my_var''] }}'
+  - debug:
+      msg: 'extra_vars[my_var] -> {{ extra_vars[''my_var''] }}'

@@ -10,3 +10,4 @@ var_3_z: '''production'' inventory, ''all'' group'
 var_4: '''production'' inventory, ''all'' group'
 message_file: 'group_files/all/message.txt'
 host_msg: '''producton'' inventory, ''all'' group'
+#null_var: ~

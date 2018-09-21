@@ -1,0 +1,35 @@
+---
+# - debug:
+#     msg: 'empty_var | mandatory -> {{ empty_var | mandatory }}'
+# - debug:
+#     msg: 'null_var | mandatory -> {{ null_var | mandatory }}'
+# - debug:
+#     msg: 'empty_string_var | mandatory -> {{ empty_string_var | mandatory }}'
+# - debug:
+#     msg: 'empty_var | not_none -> {{ empty_var | not_none }}'
+# - debug:
+#     msg: 'null_var | not_none -> {{ null_var | not_none }}'
+# - debug:
+#     msg: 'empty_string_var | not_none -> {{ empty_string_var | not_none }}'
+# - debug:
+#     msg: '{{ item }} -> {{ vars[item] }}'
+#   with_items:
+#   - 'hello_world_var'
+#   - 'empty_var'
+#   - 'empty_string_var'
+#   - 'null_var'
+# - fail:
+#     msg: '{{ item }} is None: {{ vars[item] }}'
+#   when: (vars[item] is defined) and (vars[item] == None)
+#   with_items:
+#   - 'hello_world_var'
+#   - 'empty_var'
+#   - 'empty_string_var'
+#   - 'null_var'
+- debug:
+    msg: 'Checking that values of {{ vars_with_unique_value }} vars are unique'
+- fail:
+    msg: 'Value of {{ item[0] }} var is the same as value of {{ item[1] }} var'
+  when: vars[item[0]] == vars[item[1]]
+  with_items:
+  - '{{ vars_with_unique_value | combinations(2) | list }}'

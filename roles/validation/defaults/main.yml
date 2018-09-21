@@ -1,0 +1,13 @@
+---
+empty_var:
+null_var: ~
+empty_string_var: ''
+hello_world_var: 'Hello, world!'
+var1: 'x'
+var2: 2
+var3: 'y'
+var4: 3
+var5: '2'
+var6: 5
+var7: 2
+var8: 10
