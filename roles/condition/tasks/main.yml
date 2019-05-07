@@ -1,0 +1,13 @@
+---
+- debug:
+    msg: 'var1: {{ var1 }}'
+- debug:
+    msg: 'var2: {{ var2 }}'
+  when: var2 is defined
+- debug:
+    msg: 'var3: {{ var3 }}'
+  when: var3 is defined
+- debug:
+    msg: 'list1: {{ list1 }}'
+- debug:
+    msg: 'list2: {{ list2 }}'

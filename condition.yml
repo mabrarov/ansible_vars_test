@@ -1,0 +1,6 @@
+---
+- hosts: all
+  serial: 1
+  gather_facts: False
+  roles:
+  - role: condition

@@ -1,0 +1,6 @@
+---
+list1:
+- '{{ var1 }}'
+- '{{ (var2 != None and var2 != '''') | ternary(''prefix-'' + (var2 | string) + ''-postfix'', '''')}}'
+- '{{ (var3 != None and var3 != '''') | ternary(''prefix-'' + (var3 | string) + ''-postfix'', '''')}}'
+list2: '{{ list1 | difference('''') }}'
