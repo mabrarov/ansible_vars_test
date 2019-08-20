@@ -17,7 +17,11 @@ Below example demonstrates standard inheritance and overriding of Ansible vars p
 Running printer playbook on staging environment:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/staging/hosts
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook printer.yml -i inventories/staging/hosts
 ```
 
 produces:
@@ -96,7 +100,11 @@ Below example demonstrates how to make your Ansible inventory to store configura
 Running printer playbook on canary production hosts:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit canary
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook printer.yml -i inventories/production/hosts --limit canary
 ```
 
 produces:
@@ -171,7 +179,11 @@ localhost_canary           : ok=12   changed=0    unreachable=0    failed=0
 Running printer playbook on non canary production hosts:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts --limit non_canary
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook printer.yml -i inventories/production/hosts --limit non_canary
 ```
 
 produces:
@@ -246,7 +258,11 @@ localhost                  : ok=12   changed=0    unreachable=0    failed=0
 Running printer playbook on all production hosts:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook printer.yml -i inventories/production/hosts
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook printer.yml -i inventories/production/hosts
 ```
 
 produces:
@@ -362,7 +378,11 @@ Below examples demonstrates how to deal with environment (inventory, group, host
 Running file_printer playbook on staging environment:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook file_printer.yml -i inventories/staging/hosts
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook file_printer.yml -i inventories/staging/hosts
 ```
 
 produces:
@@ -396,7 +416,11 @@ localhost                  : ok=3    changed=0    unreachable=0    failed=0
 Running file_printer playbook on production environment:
 
 ```bash
-$ docker run --rm -w /ansible -v $(pwd):/ansible abrarov/ansible ansible-playbook file_printer.yml -i inventories/production/hosts
+$ docker run --rm \
+-w /ansible \
+-v $(pwd):/ansible \
+abrarov/ansible \
+ansible-playbook file_printer.yml -i inventories/production/hosts
 ```
 
 produces:
